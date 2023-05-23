@@ -1,7 +1,6 @@
 export class User 
 {
 
-
     constructor(email, lastName ,firstName, birthDate)
     {
         this.email = email;
@@ -53,14 +52,7 @@ export class User
             return false;
         }
 
-
         return true;
     }
 
-
-
-
 }
-    
-
-export default User 
