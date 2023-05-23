@@ -1,4 +1,4 @@
-import {Toto as User} from './toto'
+import {User} from './user'
 
 
 
