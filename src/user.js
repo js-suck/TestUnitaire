@@ -2,7 +2,7 @@ export class User
 {
 
 
-    constructor(email, lastName ,firstName, birthDate)
+    constructor(email, lastName ,firstName, password, birthDate)
     {
         this.email = email;
         this.lastName = lastName;
@@ -47,12 +47,25 @@ export class User
         if(isNaN(age)){
             return false;
         }
-        console.log(age)
 
         if(age < 13 || age === 13){
             return false;
         }
 
+
+        // check passpword 
+        if(this.password === undefined || this.password === null || this.password === ""){
+            return false;
+        }
+
+        if(this.password.length < 8 || this.password.length > 40) 
+        return false;
+        
+
+        regex = new RegExp("^(?=.[a-z])(?=.[A-Z])(?=.*\d).{8,40}$");
+        if(!regex.test(this.password)){
+            return false;
+        }
 
         return true;
     }
