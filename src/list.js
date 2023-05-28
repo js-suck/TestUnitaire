@@ -17,4 +17,3 @@ class EmailSenderService {
   sendEmail(recipient, message) {
     console.log(`Email envoyé à ${recipient}: ${message}`);
   }
-}
