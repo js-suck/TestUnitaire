@@ -34,7 +34,6 @@ export class Toto
 
         let regex = new RegExp("^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$");
         if(!this.validator(this.email)){
-            console.log("falseee")
             return false;
         }
 

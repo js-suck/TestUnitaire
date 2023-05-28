@@ -1,4 +1,5 @@
-class Item {
+
+export class Item {
 
     /**
      * 
@@ -8,11 +9,10 @@ class Item {
      * @param {List} list 
      */
 
-    constructor(name, content, createAt, list) {
+    constructor(name, content, createAt = new Date(), list) {
         this.name = name;
         this.content = content;
         this.createAt = createAt;
-        this.list = list;
     }
 
     isValid() {
@@ -29,10 +29,8 @@ class Item {
             return false;
         }
 
-        if (this.list === undefined || this.list === null || this.list === "") {
-            return false;
-        }
-
         return true;
     }
+
+}
 

@@ -17,15 +17,45 @@ describe("start", () => {
 
     })
 
+    it('Should return false if password is more than 40 caracters', () => {
+        const user = new User("mats2@live.fr", "Laila", 'Charaoui', "pwdzefzefbkzjebfkjzebfjkzebfjkzebkjzebzekjbfzejkzejkzejkbfezkjfezjk", "2000/10/15");
+
+        expect(user.isValid()).toBe(false);
+    })
+
+    it('Should return false if password is less than 8 caracters', () => {
+        const user = new User("mats2@live.fr", "Laila", 'Charaoui', "dd", "2000/10/15");
+
+        expect(user.isValid()).toBe(false);
+    })
+
+    it("Should return false if password doesn't contain uppercase ", () => {
+        const user = new User("mats2@live.fr", "Laila", 'Charaoui', "ddjnzejnezjezk89", "2000/10/15");
+
+        expect(user.isValid()).toBe(false);
+    })
+
+    it("Should return false if password doesn't contain lowercase ", () => {
+        const user = new User("mats2@live.fr", "Laila", 'Charaoui', "AHHEAHBEHA89", "2000/10/15");
+
+        expect(user.isValid()).toBe(false);
+    })
+
+    it("Should return false if password doesn't contain number ", () => {
+        const user = new User("mats2@live.fr", "Laila", 'Charaoui', "AHHEAHBEHAaaaa", "2000/10/15");
+
+        expect(user.isValid()).toBe(false);
+    })
+
+
     it('Should return true if age of user is over 13', () => {
-        console.log("test 2")
-        const user = new User("mats2@live.fr", "Laila", 'Charaoui', "2000/10/15", checkEmailMocked);
+        const user = new User("mats2@live.fr", "Laila", "Charaoui", "Password76","2000/10/15");
 
         expect(user.isValid()).toBe(true);
     })
 
     it('Should return true if age of user is equal 13', () => {
-        const user = new User("mats2@live.fr", "Laila", 'Charaoui', "2006/10/15");
+        const user = new User("mats2@live.fr", "Laila", 'Charaoui',  "Password76", "2006/10/15");
         expect(user.isValid()).toBe(true);
 
     })
