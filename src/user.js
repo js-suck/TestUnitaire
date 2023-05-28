@@ -8,6 +8,7 @@ export class User
         this.firstName = firstName;
         this.password = password;
         this.birthDate = birthDate;
+        this.todoList = [];
     }
 
 
@@ -55,7 +56,6 @@ export class User
         }
 
 
-        // check passpword 
         if(this.password === undefined || this.password === null || this.password === ""){
 
             return false;
@@ -63,46 +63,29 @@ export class User
 
         if(this.password.length < 8 || this.password.length > 40) 
         {
-            console.log("trop petit")
-
             return false;
         }
 
          regex = /\d/;
          if(!regex.test(this.password))
          {
-            console.log("no number")
             return false;
          }
         
 
-        regex = new RegExp("^(?=.[a-z])(?=.[A-Z])(?=.*\d).{8,40}$");
-        if(!regex.test(this.password)){
-        console.log("invalid password")
-
-        }
-
         regex = /[A-Z]/;
         if(!regex.test(this.password))
         {
-            console.log("no uppercase")
             return false;
         }
 
         regex = /[a-z]/;
         if(!regex.test(this.password))
         {
-            console.log("no lowercase")
             return false;
         }
 
         return true;
     }
 
-
-
-
 }
-    
-
-export default User 

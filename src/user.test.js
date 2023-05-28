@@ -49,7 +49,6 @@ describe("start", () => {
 
 
     it('Should return true if age of user is over 13', () => {
-        console.log("test 2")
         const user = new User("mats2@live.fr", "Laila", "Charaoui", "Password76","2000/10/15");
 
         expect(user.isValid()).toBe(true);
