@@ -1,25 +1,19 @@
-export class List 
-{ 
-    /**
-     * Constructor
-     * @param {string} name 
-     * @param {string} description 
-     * @param {User} user 
-     * @param {Array<Item>} items
-     */   
-    constructor(name, description, user, items = [])
-    {
-        this.name = name;
-        this.description = description;
-        this.user = user;
-        this.items = items;
+class Todolist {
+  constructor() {
+    this.items = [];
+    this.emailSenderService = new EmailSenderService();
+  }
+
+  addItem(item) {
+    if (this.items.length >= 8) {
+      this.emailSenderService.sendEmail("user@example.com", "Vous ne pouvez plus ajouter que 2 items.");
     }
 
-    /**
-     * Add an item to the list
-     * @param {Item} item 
-     */
-    addItem(item){
-        this.items.push(item);
-    }
+    this.items.push(item);
+  }
 }
+
+class EmailSenderService {
+  sendEmail(recipient, message) {
+    console.log(`Email envoyé à ${recipient}: ${message}`);
+  }
