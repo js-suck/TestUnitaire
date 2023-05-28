@@ -1,7 +1,6 @@
 export class User 
 {
 
-
     constructor(email, lastName ,firstName, password, birthDate)
     {
         this.email = email;
@@ -11,13 +10,15 @@ export class User
         this.birthDate = birthDate;
     }
 
+
     isValid(){
+
 
         if(this.email === undefined || this.email === null || this.email === ""){
             return false;
         }
 
-        if(this.name === undefined || this.name === null || this.name === ""){
+        if(this.lastName === undefined || this.lastName === null || this.lastName === ""){
             return false;
         }
 
@@ -28,6 +29,7 @@ export class User
         if(this.birthDate === undefined || this.birthDate === null || this.birthDate === ""){
             return false;
         }
+
 
 
         let regex = new RegExp("^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$");
@@ -55,15 +57,42 @@ export class User
 
         // check passpword 
         if(this.password === undefined || this.password === null || this.password === ""){
+
             return false;
         }
 
         if(this.password.length < 8 || this.password.length > 40) 
-        return false;
+        {
+            console.log("trop petit")
+
+            return false;
+        }
+
+         regex = /\d/;
+         if(!regex.test(this.password))
+         {
+            console.log("no number")
+            return false;
+         }
         
 
         regex = new RegExp("^(?=.[a-z])(?=.[A-Z])(?=.*\d).{8,40}$");
         if(!regex.test(this.password)){
+        console.log("invalid password")
+
+        }
+
+        regex = /[A-Z]/;
+        if(!regex.test(this.password))
+        {
+            console.log("no uppercase")
+            return false;
+        }
+
+        regex = /[a-z]/;
+        if(!regex.test(this.password))
+        {
+            console.log("no lowercase")
             return false;
         }
 
